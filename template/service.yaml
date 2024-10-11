@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: service
+  namespace: {{ .Values.service.namespace }}
+spec:
+  selector:
+    app: nginx
+    project: frontend
+    env: frontend
+  ports:
+  - name: nginx
+    protocol: TCP
+    port: 80 #service port
+    targetPort: {{ .Values.service.port }} #target port

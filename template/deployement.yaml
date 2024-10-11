@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend
+  namespace: {{ .Values.deployement.namespace }}
+  labels:
+    project: for_deploy
+    env: fronetnd
+spec:
+  replicas: {{ .Values.deployement.replicas }}
+  selector:
+    matchLabels:
+      app: nginx
+      project: frontend
+      env: frontend
+  template:
+    metadata:
+      name: deployement
+      labels:
+        app: nginx
+        project: frontend
+        env: frontend
+    spec:
+      containers:
+      - name: frontend
+        image: munaga123/frontend:{{ .Values.deployement.version }}
+        # envFrom:
+        # - configMapRef:
+        #     name: config-map

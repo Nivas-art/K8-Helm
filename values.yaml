@@ -1,0 +1,7 @@
+deployement:
+  replicas: 2
+  namespace: expense
+  version: v1.0
+service:
+  namespace: expense
+  port: 80
